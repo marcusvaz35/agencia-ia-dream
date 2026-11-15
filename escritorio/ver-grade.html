@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Ver GLB com grade</title>
+<style>html,body{margin:0;background:#cfd8e3}#g{position:fixed;inset:0;pointer-events:none}</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+<canvas id="g"></canvas>
+<script type="module">
+// ?m=glb&rot=graus  -> vista frontal ortográfica, altura normalizada para 1 (pés em 0), grade a cada 0,1 para medir juntas
+import * as THREE from 'three'; import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const P = new URLSearchParams(location.search), W = innerWidth, H = innerHeight;
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setSize(W, H); r.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(r.domElement);
+const s = new THREE.Scene(); s.background = new THREE.Color('#cfd8e3');
+const g = await new GLTFLoader().loadAsync(P.get('m'));
+g.scene.traverse(o => { if (o.isMesh) o.material = new THREE.MeshBasicMaterial({ map: o.material.map, vertexColors: !!o.geometry.attributes.color, side: THREE.DoubleSide }); });
+const grp = new THREE.Group(); grp.add(g.scene); grp.rotation.y = (+P.get('rot') || 0) * Math.PI / 180; s.add(grp); grp.updateMatrixWorld(true);
+const bb = new THREE.Box3().setFromObject(grp), sz = bb.getSize(new THREE.Vector3()), c = bb.getCenter(new THREE.Vector3()); const k = 1 / sz.y;
+grp.scale.setScalar(k); grp.position.set(-c.x * k, -bb.min.y * k, -c.z * k); s.add(new THREE.AmbientLight(0xffffff, 1));
+const asp = W / H, yh = 1.1, cam = new THREE.OrthographicCamera(-yh * asp / 2, yh * asp / 2, 1.05, -0.05, 0.01, 10); cam.position.set(0, 0, 3); r.render(s, cam);
+const cv = document.getElementById('g'); cv.width = W; cv.height = H; const x = cv.getContext('2d'); x.font = '12px sans-serif';
+const px = (X) => (X / (yh * asp) + 0.5) * W, py = (Y) => (1.05 - Y) / 1.1 * H;
+for (let i = 0; i <= 10; i++) { const Y = i / 10; x.strokeStyle = i % 5 ? '#0003' : '#0008'; x.beginPath(); x.moveTo(0, py(Y)); x.lineTo(W, py(Y)); x.stroke(); x.fillStyle = '#000'; x.fillText(Y.toFixed(1), 2, py(Y) - 2); }
+for (let i = -4; i <= 4; i++) { const X = i / 10; x.strokeStyle = '#0003'; x.beginPath(); x.moveTo(px(X), 0); x.lineTo(px(X), H); x.stroke(); x.fillStyle = '#000'; x.fillText(X.toFixed(1), px(X) + 2, H - 4); }
+window.__info = { alturaOriginal: sz.y, largura: sz.x * k, prof: sz.z * k };
+</script>

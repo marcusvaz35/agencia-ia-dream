@@ -1,0 +1,79 @@
+{
+  "collapse-filter": true,
+  "search": "-path:99-Sistema",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:01-Projetos",
+      "color": {
+        "a": 1,
+        "rgb": 5213943
+      }
+    },
+    {
+      "query": "path:02-Padroes",
+      "color": {
+        "a": 1,
+        "rgb": 4176208
+      }
+    },
+    {
+      "query": "path:03-Decisoes",
+      "color": {
+        "a": 1,
+        "rgb": 15763518
+      }
+    },
+    {
+      "query": "path:04-Preferencias",
+      "color": {
+        "a": 1,
+        "rgb": 14377378
+      }
+    },
+    {
+      "query": "path:05-Stack",
+      "color": {
+        "a": 1,
+        "rgb": 10711543
+      }
+    },
+    {
+      "query": "path:06-Aprendizados",
+      "color": {
+        "a": 1,
+        "rgb": 14922561
+      }
+    },
+    {
+      "query": "path:07-Sessoes",
+      "color": {
+        "a": 1,
+        "rgb": 9147550
+      }
+    },
+    {
+      "query": "file:00-INDICE",
+      "color": {
+        "a": 1,
+        "rgb": 16765757
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.5199479284163391,
+  "close": true
+}

@@ -1,0 +1,3 @@
+# Referências de artes e telão (material de terceiros)
+
+As imagens em `referencias-artes-evento/` e `referencias-telao/` são **referências visuais de terceiros** reunidas para ESTUDO INTERNO do estilo (composição, cor, tipografia). As imagens `ref-02` (artes de evento) e `telao-11` (telão) foram retiradas do kit por conterem dados pessoais legíveis de terceiros; as tabelas em `conhecimento/artes-evento-igreja.md` e `artes-telao-igreja.md` mantêm só a descrição do estilo delas. **Não são nossas e não devem ser republicadas, vendidas nem copiadas.** As artes que a Agência cria devem ser originais, inspiradas no estilo.

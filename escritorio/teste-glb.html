@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teste do modelo 3D</title>
+<style>html,body{margin:0;height:100%;background:#cfd8e3;font-family:system-ui}#info{position:fixed;left:10px;top:10px;background:#0009;color:#fff;padding:6px 10px;border-radius:8px}</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+</head><body><div id="info">modelo: ceo-masculino · ?ang=graus para girar</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setSize(innerWidth, innerHeight); r.setPixelRatio(devicePixelRatio); document.body.appendChild(r.domElement);
+const cena = new THREE.Scene(); cena.background = new THREE.Color('#cfd8e3');
+cena.add(new THREE.HemisphereLight(0xffffff, 0x667788, 2.2)); const d = new THREE.DirectionalLight(0xffffff, 1.5); d.position.set(2, 4, 3); cena.add(d);
+const cam = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.05, 100);
+const ang = (+new URLSearchParams(location.search).get('ang') || 0) * Math.PI / 180;
+cam.position.set(Math.sin(ang) * 5, 1.2, Math.cos(ang) * 5);
+const c = new OrbitControls(cam, r.domElement); c.target.set(0, 1.05, 0); c.update();
+new GLTFLoader().load('modelos/ceo-masculino/personagem_fiel_referencia.glb', (g) => { cena.add(g.scene); });
+(function loop() { r.render(cena, cam); requestAnimationFrame(loop); })();
+</script></body></html>

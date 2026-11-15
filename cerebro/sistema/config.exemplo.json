@@ -1,0 +1,7 @@
+{
+  "vault": "__COFRE__",
+  "claude": "__CLAUDE__",
+  "modelo": "sonnet",
+  "curador": "claude",
+  "modo": "sessao"
+}

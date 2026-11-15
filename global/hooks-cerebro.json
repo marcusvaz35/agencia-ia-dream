@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "python3 \"$HOME/.segundo-cerebro/cerebro.py\" inicio", "timeout": 10 } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "python3 \"$HOME/.segundo-cerebro/cerebro.py\" buscar", "timeout": 10 } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "python3 \"$HOME/.segundo-cerebro/cerebro.py\" registrar", "timeout": 15 } ] }
+    ]
+  }
+}

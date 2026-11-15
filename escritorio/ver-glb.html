@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Ver GLB cru</title>
+<style>html,body{margin:0;background:#cfd8e3}</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+<script type="module">
+// ?m=arquivo.glb&ang=graus (0 = olhando para +z) · mostra o modelo cru, centralizado, com cor de vértice se existir
+import * as THREE from 'three'; import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+const P = new URLSearchParams(location.search);
+const r = new THREE.WebGLRenderer({ antialias: true }); r.setSize(innerWidth, innerHeight); r.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(r.domElement);
+const s = new THREE.Scene(); s.background = new THREE.Color('#cfd8e3'); s.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 2.2)); const d = new THREE.DirectionalLight(0xffffff, 1.2); d.position.set(2, 4, 3); s.add(d);
+const g = await new GLTFLoader().loadAsync(P.get('m')); const bb = new THREE.Box3().setFromObject(g.scene); const c = bb.getCenter(new THREE.Vector3()), sz = bb.getSize(new THREE.Vector3());
+if(P.get('basic'))g.scene.traverse(o=>{if(o.isMesh){o.material=new THREE.MeshBasicMaterial({vertexColors:!!o.geometry.attributes.color,map:o.material.map,side:THREE.DoubleSide})}});g.scene.position.sub(c); g.scene.rotation.y = (+P.get('rot') || 0) * Math.PI / 180; s.add(g.scene);
+const cam = new THREE.PerspectiveCamera(30, innerWidth / innerHeight, 0.01, 100); const a = (+P.get('ang') || 0) * Math.PI / 180, D = sz.y * 2.3;
+cam.position.set(Math.sin(a) * D, 0, Math.cos(a) * D); cam.lookAt(0, 0, 0); r.render(s, cam); window.__info = { sz: sz.toArray(), c: c.toArray() };
+</script>

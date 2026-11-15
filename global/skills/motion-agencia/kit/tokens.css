@@ -1,0 +1,68 @@
+/* Motion Agência — tokens. Troque o tema com <div id="root" data-tema="fe"> (ou outro).
+   Cenas só usam var(--...): trocar paleta NUNCA exige mexer nas cenas. */
+:root, [data-tema="fe"] {          /* fé / Deus / propósito: ouro quente sobre azul-noite */
+  --bg0:#050817; --bg1:#12204A; --acc:#F2B84B; --acc2:#FFE3A3; --txt:#F6EEDC; --dim:#8E95B3;
+  --warn:#E5484D; --glow:rgba(242,184,75,.55); --line:rgba(242,184,75,.28);
+}
+[data-tema="negocios"] {           /* negócios / franquia / liderança: azul-royal elétrico sobre grafite-marinho */
+  --bg0:#06090F; --bg1:#12203A; --acc:#4C9BFF; --acc2:#BFDBFF; --txt:#EEF3FA; --dim:#8794AB;
+  --warn:#FF5A5F; --glow:rgba(76,155,255,.55); --line:rgba(76,155,255,.28);
+}
+[data-tema="tech"] {               /* tecnologia / IA: verde HUD (referência original) */
+  --bg0:#040B07; --bg1:#0E2A18; --acc:#3DFF6E; --acc2:#B6FFC9; --txt:#EAF3E4; --dim:#7FA38B;
+  --warn:#FF4D4D; --glow:rgba(61,255,110,.55); --line:rgba(61,255,110,.28);
+}
+[data-tema="familia"] {            /* família / lar / acolhimento: âmbar-coral sobre marrom-chocolate */
+  --bg0:#140B08; --bg1:#3A2018; --acc:#FF9A62; --acc2:#FFD9BF; --txt:#FFF1E6; --dim:#B99A8A;
+  --warn:#E5484D; --glow:rgba(255,154,98,.5); --line:rgba(255,154,98,.28);
+}
+[data-tema="vendas"] {             /* vendas / urgência / oferta: vermelho-vivo sobre preto */
+  --bg0:#080808; --bg1:#2A0C0C; --acc:#FF3B30; --acc2:#FFB4AE; --txt:#FFFFFF; --dim:#A08B8B;
+  --warn:#FFD23F; --glow:rgba(255,59,48,.55); --line:rgba(255,59,48,.3);
+}
+[data-tema="saude"] {              /* saúde / bem-estar / calma: turquesa sobre azul-petróleo escuro */
+  --bg0:#041015; --bg1:#0B3340; --acc:#2EE6D6; --acc2:#B5FAF4; --txt:#E8FBF9; --dim:#7DA6AA;
+  --warn:#FF6B6B; --glow:rgba(46,230,214,.5); --line:rgba(46,230,214,.28);
+}
+[data-tema="educacao"] {           /* educação / método / clareza: FUNDO CLARO, laranja-tijolo */
+  --bg0:#EFEAE0; --bg1:#FBF8F2; --acc:#E4572E; --acc2:#F59C7E; --txt:#14161B; --dim:#6B6F78;
+  --warn:#B3261E; --glow:rgba(228,87,46,.35); --line:rgba(20,22,27,.22);
+}
+:root { --f-display:"Archivo Black","Inter",sans-serif; --f-mono:"JetBrains Mono","Space Mono",monospace; }
+
+/* ---------- base ---------- */
+.ma-root,.ma-root *{box-sizing:border-box;margin:0;padding:0}
+.ma-bg{position:absolute;inset:0;background:radial-gradient(ellipse 85% 60% at 50% 42%,var(--bg1) 0%,var(--bg0) 72%)}
+.ma-scene{position:absolute;inset:0}
+.ma-cam{position:absolute;inset:0}
+/* acabamento */
+.ma-vig{position:absolute;inset:0;z-index:70;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 50%,transparent 55%,rgba(0,0,0,.62) 100%)}
+.ma-grain{position:absolute;inset:-300px;z-index:71;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>");background-size:300px 300px}
+/* chão em grade (perspectiva) */
+.ma-floor{position:absolute;left:-40%;right:-40%;bottom:0;height:46%;z-index:1;opacity:.55;
+  background-image:linear-gradient(var(--line) 2px,transparent 2px),linear-gradient(90deg,var(--line) 2px,transparent 2px);
+  background-size:90px 90px;transform:perspective(520px) rotateX(68deg);transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(to top,#000 10%,transparent 92%);mask-image:linear-gradient(to top,#000 10%,transparent 92%)}
+/* moldura HUD (dentro da zona segura: x 140-940, y 230-1530) */
+.ma-hud{position:absolute;inset:0;z-index:60;pointer-events:none;font-family:var(--f-mono);color:var(--txt)}
+.ma-cross{position:absolute;width:30px;height:30px;line-height:30px;text-align:center;font-size:30px;color:var(--acc);opacity:.8}
+.ma-cross-tl{left:125px;top:215px}.ma-cross-tr{left:955px;top:215px}
+.ma-cross-bl{left:125px;top:1515px}.ma-cross-br{left:955px;top:1515px}
+.ma-lbl{position:absolute;font-size:24px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+.ma-lbl-tl{left:170px;top:222px;color:var(--acc)}
+.ma-lbl-tr{right:140px;top:222px;color:var(--txt);opacity:.8}
+.ma-lbl-foot{left:170px;top:1492px;color:var(--dim)}
+.ma-dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--warn);margin-right:12px}
+/* tipografia */
+.ma-words{position:absolute;left:140px;width:800px;text-align:center;font-family:var(--f-display);color:var(--txt);letter-spacing:-.035em;line-height:1.02;font-size:112px}
+.ma-line{display:block}
+.ma-w{display:inline-block;position:relative;margin:0 .13em;will-change:transform,filter}
+.ma-w i{font-style:normal;display:inline-block}
+.ma-w b{position:absolute;left:0;top:0;color:var(--acc);font-weight:inherit;opacity:0;text-shadow:0 0 38px var(--glow),0 0 90px var(--glow)}
+.ma-big{font-size:1.35em}.ma-huge{font-size:2.3em}.ma-small{font-size:.62em}
+.ma-mono{font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.ma-flare{position:absolute;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--acc2) 50%,transparent);box-shadow:0 0 40px 10px var(--glow);z-index:55;opacity:0}
+.ma-flash{position:absolute;inset:0;background:var(--acc);z-index:65;opacity:0;pointer-events:none}
+.ma-sweep{position:absolute;top:-10%;bottom:-10%;width:360px;z-index:58;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--glow),var(--acc2),var(--glow),transparent);filter:blur(30px);mix-blend-mode:screen}

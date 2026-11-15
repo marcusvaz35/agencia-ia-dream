@@ -1,0 +1,21 @@
+{
+  "_ajuda": "Tabela editavel de nomes. Troque o valor de \"nome\" (e, se quiser, \"apelido\") e recarregue a pagina do escritorio. O apelido, quando existe, aparece no lugar do nome na etiqueta. Se um agente nao estiver aqui, o escritorio usa o cargo.",
+  "gerente-geral":          { "nome": "Rogério" },
+  "editor-viral-podcast":   { "nome": "Fernando" },
+  "desenvolvedor":          { "nome": "Davi" },
+  "web-designer":           { "nome": "Lívia" },
+  "copywriter":             { "nome": "Helena" },
+  "especialista-instagram": { "nome": "Noa" },
+  "social-media":           { "nome": "Marina" },
+  "especialista-ganchos":   { "nome": "Thiago" },
+  "editor-de-palestras":    { "nome": "Armando" },
+  "editor-de-video":        { "nome": "Nunu" },
+  "especialista-frases":    { "nome": "Gustavo" },
+  "oraculo":                { "nome": "Aurélio" },
+  "dev-seguranca":          { "nome": "Otávio" },
+  "gestor-de-trafego":      { "nome": "Camila" },
+  "vendedor":               { "nome": "Rafael" },
+  "atendente":              { "nome": "Neide" },
+  "contador":               { "nome": "Hélio" },
+  "analista":               { "nome": "Renata" }
+}

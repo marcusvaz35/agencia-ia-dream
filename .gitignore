@@ -1,0 +1,33 @@
+# segredos
+segredos.env
+.env
+*.env
+!segredos.env.exemplo
+# temporários
+.claude/settings.local.json
+*.log
+.env.*
+*.pem
+*.key
+.caminho-instalado
+eventos.jsonl
+node_modules/
+.venv/
+.DS_Store
+._*
+# dados de cliente e mídia (ficam só no seu Mac)
+entregas/
+VIDEOS-PRONTOS/
+clientes/*/
+!clientes/_modelo/
+escritorio/pedidos/
+ferramentas/mirofish/repo/
+ferramentas/frase-0600/video-base.mp4
+ferramentas/frase-0600/audio-base.m4a
+ferramentas/palestra/sons/
+*.mp4
+*.mov
+*.m4a
+*.mp3
+*.wav
+__pycache__/

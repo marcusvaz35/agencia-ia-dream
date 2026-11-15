@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escritório da Agência</title>
+<link rel="stylesheet" href="estilo.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="cena"></div>
+
+<header class="topo">
+  <div class="marca">
+    <div class="logo">IA</div>
+    <div>
+      <strong>Agência IA Dream</strong>
+      <small><span class="pt cinza"></span><span id="resumoEquipe">carregando…</span></small>
+    </div>
+  </div>
+  <div class="seg" id="modos">
+    <button data-modo="geral" class="on">Visão geral</button>
+    <button data-modo="gerente">🎮 Assumir o Gerente</button>
+  </div>
+  <nav class="seg salas" id="salas"></nav>
+  <button class="icone luz" id="btnGirar" aria-label="Girar a vista aérea" title="Girar a vista aérea">⟳</button>
+  <button class="icone luz" id="btnLuz" aria-label="Dia ou noite">🌙</button>
+  <button class="icone" id="btnPainel" aria-label="Abrir painel">☰</button>
+</header>
+
+<aside class="painel" id="esq">
+  <section class="stats">
+    <div class="stat"><span>Trabalhando agora</span><b id="sTrab">–</b></div>
+    <div class="stat"><span>Status ao vivo</span><b class="cinza-t" id="sVivo">…</b></div>
+    <div class="stat"><span>Concluídas hoje</span><b id="sConcl">–</b></div>
+    <div class="stat"><span>Entregas salvas</span><b id="sEntregas">–</b></div>
+    <div class="stat"><span>Agentes na equipe</span><b id="sAgentes">–</b></div>
+    <div class="stat"><span>Ficha do projeto</span><b id="sFicha">–</b></div>
+  </section>
+
+  <section class="card">
+    <h3>Atividade ao vivo</h3>
+    <ul class="feed" id="feed"><li class="vazio">Nenhuma atividade ainda. Faça um pedido no Claude Code e acompanhe aqui.</li></ul>
+  </section>
+
+  <section class="card">
+    <h3>Nova tarefa para a equipe</h3>
+    <label class="nota" for="agentePedido">Quem vai fazer</label>
+    <select id="agentePedido"></select>
+    <textarea id="tarefa" rows="3" placeholder="Ex.: Pesquisar os concorrentes e sugerir um preço"></textarea>
+    <button class="primario" id="btnCopiar">Fazer pedido</button>
+    <p class="nota" id="notaPedido">O agente escolhido começa na hora e aparece trabalhando aqui. Nada é publicado sem o seu OK.</p>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="card">
+    <h3>Pedidos e entregas</h3>
+    <ul class="lista" id="pedidos"><li class="vazio">Nenhum pedido feito pela página ainda.</li></ul>
+  </section>
+
+  <section class="card">
+    <h3>Equipe</h3>
+    <ul class="lista" id="lista"></ul>
+  </section>
+</aside>
+
+<aside class="painel oculto" id="dir" aria-live="polite"></aside>
+
+<div class="dica oculto" id="dica">Você é o <b>Gerente-Geral</b> · <b>W A S D</b> andar · arraste para girar a câmera</div>
+<div class="setas oculto" id="setas">
+  <button data-k="frente">▲</button>
+  <div><button data-k="esq">◀</button><button data-k="tras">▼</button><button data-k="dir">▶</button></div>
+</div>
+<div class="toast oculto" id="toast"></div>
+
+<script src="dados.js"></script>
+<script type="module" src="escritorio.js"></script>
+</body>
+</html>

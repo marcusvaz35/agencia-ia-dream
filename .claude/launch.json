@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "escritorio",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["escritorio/servidor.mjs"],
+      "port": 5173
+    }
+  ]
+}
